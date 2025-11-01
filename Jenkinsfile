@@ -4,10 +4,6 @@ pipeline {
     jdk 'JDK'
     maven 'Maven'
   }
-  options {
-    timestamps()
-    buildDiscarder(logRotator(numToKeepStr: '20'))
-  }
   stages {
     stage('Checkout') {
       steps {
@@ -16,8 +12,8 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'mvn -v'
-        sh 'mvn -B -DskipTests=true clean package'
+        bat 'mvn -v'
+        bat 'mvn -B -DskipTests=true clean package'
       }
       post {
         success {
@@ -27,7 +23,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'mvn -B test'
+        bat 'mvn -B test'
       }
       post {
         always {
