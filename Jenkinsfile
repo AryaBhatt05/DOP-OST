@@ -1,8 +1,8 @@
 pipeline {
   agent any
   tools {
-    jdk 'JDK17'
-    maven 'M3'
+    jdk 'JDK'
+    maven 'Maven'
   }
   options {
     timestamps()
